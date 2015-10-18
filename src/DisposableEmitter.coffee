@@ -20,6 +20,9 @@ class DisposableEmitter
         if @disposed
             throw new Error("Emitter has been disposed")
 
+        if (type = typeof fn) isnt "function"
+            throw new TypeError("Listener must be function(#{type} given).")
+
         if @_observedEvents[event]?
             fn.apply context, @_observedEvents[event].args
 
@@ -38,6 +41,9 @@ class DisposableEmitter
     once : (event, fn, context = @) ->
         if @disposed
             throw new Error("Emitter has been disposed")
+
+        if (type = typeof fn) isnt "function"
+            throw new TypeError("Listener must be function(#{type} given).")
 
         if @_observedEvents[event]?
             fn.apply context, @_observedEvents[event].args
