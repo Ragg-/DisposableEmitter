@@ -116,6 +116,20 @@ class DisposableEmitter
 
 
     ###*
+    # @return {Array|Boolean}
+    ###
+    listeners : (event, exists) ->
+        if @disposed
+            throw new Error("Emitter has been disposed")
+
+        available = @_events[event]? and @_events[event].length isnt 0
+
+        return available if exists
+        return [] unless available
+        return (entry.listener for entry in @_events[event])
+
+
+    ###*
     # @return {DisposableEmitter}
     ###
     observeAddListener : (event, args...) ->
