@@ -4,7 +4,8 @@
   "description": "Disposable EventEmitter",
   "main": "lib/DisposableEmitter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "coffee -o lib/ -c src/"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ragg-/DisposableEmitter/issues"
-  },
-  "scripts": {
-    "prepublish": "coffee -o lib/ -c src/"
   },
   "homepage": "https://github.com/Ragg-/DisposableEmitter#readme",
   "dependencies": {
