@@ -36,7 +36,7 @@ disposer.dispose()
 ##
 
 # observeAddListener(event, args...)
-someModule.observeAddListener "initialized", null, "arguments"
+someModule.lockAutoEmit "initialized", null, "arguments"
 
 # This listener call immediaty.
 someModule.once "initialized", (err, message) ->
@@ -53,7 +53,7 @@ setTimeout ->
 ## Unobserve listener adding
 ##
 
-someModule.unobserveAddListener "initialized"
+someModule.unlockAutoEmit "initialized"
 
 # It is not called until it is emitted "initialized" event.
 someModule.on "initialized", (err, message) ->
