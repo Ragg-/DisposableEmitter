@@ -110,7 +110,7 @@ class DisposableEmitter
             if entry.once
                 @off event, entry.fn, entry.context, true
 
-            entry.listeners.apply entry.context, args
+            entry.listener.apply entry.context, args
 
         @
 
