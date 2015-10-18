@@ -14,7 +14,10 @@ describe "DisposableEmitter", ->
         it "Can't be add listener of non-function by #on", ->
             emitter = new DisposableEmitter
             (-> emitter.on "event", null).should.throw()
+            (-> emitter.on "event", (->)).should.not.throw()
             return
+
+        return
 
     describe "#once", ->
         it "Correctry added listener by #once in listeners?", ->
@@ -27,6 +30,7 @@ describe "DisposableEmitter", ->
         it "Can't be add listener of non-function by #once", ->
             emitter = new DisposableEmitter
             (-> emitter.on "event", null).should.throw()
+            (-> emitter.on "event", (->)).should.not.throw()
             return
 
         it "Listener really call once", ->
@@ -34,12 +38,13 @@ describe "DisposableEmitter", ->
             spy = Sinon.spy()
 
             emitter.once "event", spy
-
             emitter.emit "event"
             emitter.emit "event"
 
             spy.calledOnce.should.be.true()
             return
+
+        return
 
 
     describe "#off", ->
@@ -78,9 +83,64 @@ describe "DisposableEmitter", ->
             callingSpy.called.should.be.true()
             return
 
+        return
+
     describe "#removeAllListeners", ->
+
     describe "#emit", ->
+        it "Emit with binded context", ->
+            emitter = new DisposableEmitter
+            ctx = {}
+            spy = Sinon.spy()
+
+            emitter.on "hoge", spy, ctx
+            emitter.emit "hoge"
+
+            spy.calledOn(ctx).should.be.true()
+            return
+
+        return
+
     describe "#listeners", ->
-    describe "#observeAddListener", ->
-    describe "#unobserveAddListener", ->
+
+    describe "#lockAutoEmit", ->
+        it "Execute auto emit", ->
+            emitter = new DisposableEmitter
+            spy = Sinon.spy()
+
+            emitter.lockAutoEmit "foo"
+            emitter.on "foo", spy
+
+            spy.called.should.be.true()
+            return
+
+        it "Execute auto emit with args", ->
+            emitter = new DisposableEmitter
+            spy = Sinon.spy()
+
+            emitter.lockAutoEmit "foo", "bar", {"hoge": "fuga"}
+            emitter.on "foo", spy
+
+            spy.calledWithExactly("bar", {"hoge": "fuga"}).should.be.true()
+            return
+
+        return
+
+
+    describe "#unlockAutoEmit", ->
+        it "Unlock auto emit", ->
+            emitter = new DisposableEmitter
+            spyBeforeUnlock = Sinon.spy()
+            spyAfterUnlock = Sinon.spy()
+
+            emitter.lockAutoEmit "baz"
+            emitter.on "baz", spyBeforeUnlock
+
+            emitter.unlockAutoEmit "baz"
+            emitter.on "baz", spyAfterUnlock
+
+            spyBeforeUnlock.called.should.be.true()
+            spyAfterUnlock.called.should.be.false()
+            return
+
     describe "#dispose", ->
