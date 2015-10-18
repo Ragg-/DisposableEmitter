@@ -108,7 +108,7 @@ class DisposableEmitter
 
         for entry in listeners
             if entry.once
-                @off event, entry.fn, entry.context, true
+                @off event, entry.listener, entry.context, true
 
             entry.listener.apply entry.context, args
 
