@@ -161,6 +161,8 @@ class DisposableEmitter
     # @return {Boolean}
     ###
     dispose : ->
+        return true if @disposed
+
         @_eventDisposers.dispose()
 
         @_events = null
