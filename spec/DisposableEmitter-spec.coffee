@@ -143,4 +143,12 @@ describe "DisposableEmitter", ->
             spyAfterUnlock.called.should.be.false()
             return
 
+    describe "#isAutoEmitting", ->
+        it "Check emit locked", ->
+            emitter = new DisposableEmitter
+
+            emitter.lockAutoEmit "baz"
+            emitter.isAutoEmitting("baz").should.be.true()
+            emitter.isAutoEmitting("foo").should.be.false()
+
     describe "#dispose", ->
