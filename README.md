@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Ragg-/DisposableEmitter.svg)](https://travis-ci.org/Ragg-/DisposableEmitter)
+
 # DisposableEmitter
 An disposable-emitter powered by [event-kit]()
 
