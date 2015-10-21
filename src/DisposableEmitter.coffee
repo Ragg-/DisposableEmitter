@@ -157,6 +157,14 @@ class DisposableEmitter
         delete @_observedEvents[event]
         @
 
+
+    ###*
+    # @return {Boolean}
+    ###
+    isAutoEmitting : (event) ->
+        @_observedEvents[event]?
+
+
     ###*
     # @return {Boolean}
     ###
