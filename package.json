@@ -1,6 +1,6 @@
 {
   "name": "disposable-emitter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Disposable EventEmitter",
   "main": "lib/DisposableEmitter.js",
   "scripts": {
