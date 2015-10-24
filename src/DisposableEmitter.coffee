@@ -1,4 +1,4 @@
-{CompositeDisposable, Disposable} = require "event-kit"
+{CompositeDisposable, Disposable} = require "event-kit-browserify"
 
 module.exports =
 class DisposableEmitter
