@@ -1,9 +1,14 @@
-[![Build Status](https://travis-ci.org/Ragg-/DisposableEmitter.svg)](https://travis-ci.org/Ragg-/DisposableEmitter)
+
 
 # DisposableEmitter
 An disposable-emitter powered by [event-kit]()
 
 Respects : [eventemitter3](), [event-kit]()
+
+[![Build Status](https://img.shields.io/travis/Ragg-/DisposableEmitter.svg)](https://travis-ci.org/Ragg-/DisposableEmitter)
+![npm license](https://img.shields.io/npm/l/disposable-emitter.svg)
+[![npm version](https://img.shields.io/npm/v/disposable-emitter.svg)](https://www.npmjs.com/package/disposable-emitter)
+![npm dependencies](https://david-dm.org/Ragg-/DisposableEmitter.svg)
 
 # Example
 ``` coffeescript
