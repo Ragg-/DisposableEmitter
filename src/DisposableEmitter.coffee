@@ -138,7 +138,7 @@ class DisposableEmitter
     ###*
     # @return {DisposableEmitter}
     ###
-    lockAutoEmit : (event, args...) ->
+    startAutoEmit : (event, args...) ->
         if @disposed
             throw new Error("Emitter has been disposed")
 
@@ -151,7 +151,7 @@ class DisposableEmitter
     ###*
     # @return {DisposableEmitter}
     ###
-    unlockAutoEmit : (event) ->
+    stopAutoEmit : (event) ->
         return if @disposed
         return false unless @_observedEvents[event]?
         delete @_observedEvents[event]
