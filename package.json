@@ -25,6 +25,7 @@
     "event-kit-browserify": "^1.4.1"
   },
   "devDependencies": {
+    "benchmark": "^1.0.0",
     "coffee-script": "^1.10.0",
     "mocha": "^2.3.3",
     "should": "^7.1.0",
