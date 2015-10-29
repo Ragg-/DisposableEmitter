@@ -103,12 +103,12 @@ describe "DisposableEmitter", ->
 
     describe "#listeners", ->
 
-    describe "#lockAutoEmit", ->
+    describe "#startAutoEmit", ->
         it "Execute auto emit", ->
             emitter = new DisposableEmitter
             spy = Sinon.spy()
 
-            emitter.lockAutoEmit "foo"
+            emitter.startAutoEmit "foo"
             emitter.on "foo", spy
 
             spy.called.should.be.true()
@@ -118,7 +118,7 @@ describe "DisposableEmitter", ->
             emitter = new DisposableEmitter
             spy = Sinon.spy()
 
-            emitter.lockAutoEmit "foo", "bar", {"hoge": "fuga"}
+            emitter.startAutoEmit "foo", "bar", {"hoge": "fuga"}
             emitter.on "foo", spy
 
             spy.calledWithExactly("bar", {"hoge": "fuga"}).should.be.true()
@@ -127,16 +127,16 @@ describe "DisposableEmitter", ->
         return
 
 
-    describe "#unlockAutoEmit", ->
+    describe "#stopAutoEmit", ->
         it "Unlock auto emit", ->
             emitter = new DisposableEmitter
             spyBeforeUnlock = Sinon.spy()
             spyAfterUnlock = Sinon.spy()
 
-            emitter.lockAutoEmit "baz"
+            emitter.startAutoEmit "baz"
             emitter.on "baz", spyBeforeUnlock
 
-            emitter.unlockAutoEmit "baz"
+            emitter.stopAutoEmit "baz"
             emitter.on "baz", spyAfterUnlock
 
             spyBeforeUnlock.called.should.be.true()
@@ -147,7 +147,7 @@ describe "DisposableEmitter", ->
         it "Check emit locked", ->
             emitter = new DisposableEmitter
 
-            emitter.lockAutoEmit "baz"
+            emitter.startAutoEmit "baz"
             emitter.isAutoEmitting("baz").should.be.true()
             emitter.isAutoEmitting("foo").should.be.false()
 
