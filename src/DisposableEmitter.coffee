@@ -171,8 +171,7 @@ class DisposableEmitter
     dispose : ->
         return true if @disposed
 
-        @_eventDisposers.dispose()
-
+        @_eventDisposers = null
         @_events = null
         @_observedEvents = null
         @_eventDisposers = null
