@@ -1,9 +1,9 @@
 
 
 # DisposableEmitter
-An disposable-emitter powered by [event-kit]()
+An disposable-emitter powered by [event-kit](https://www.npmjs.com/package/event-kit)
 
-Respects : [eventemitter3](), [event-kit]()
+Respects : [eventemitter3](https://www.npmjs.com/package/eventemitter3), [event-kit](https://www.npmjs.com/package/event-kit)
 
 [![Build Status](https://img.shields.io/travis/Ragg-/DisposableEmitter.svg)](https://travis-ci.org/Ragg-/DisposableEmitter)
 ![npm license](https://img.shields.io/npm/l/disposable-emitter.svg)
